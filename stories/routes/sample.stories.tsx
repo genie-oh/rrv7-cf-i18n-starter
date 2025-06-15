@@ -1,4 +1,6 @@
+import storybookEnv from "../../.storybook/storybook-env";
 import type { StoryObj } from "@storybook/react-vite";
+import { i18nextResources } from "../../app/infra/i18n/i18n-config";
 import Sample from "../../app/routes/sample";
 
 // Storybook Meta
@@ -24,6 +26,12 @@ export const SampleStory: StoryObj<typeof meta> = {
   args: {
     loaderData: {
       message: "Message from Storybook",
+      translations: {
+        sample: i18nextResources[storybookEnv.locale]?.translation.sample,
+      },
+    },
+    params: {
+      locale: storybookEnv.locale,
     },
   },
 };

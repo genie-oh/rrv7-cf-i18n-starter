@@ -23,6 +23,18 @@ export default defineConfig({
     isServerRunning && reactRouter(),
     tsconfigPaths(),
   ],
+  resolve: {
+    // mock server-build for storybook and test-storybook avoid
+    // > Internal server error: Failed to resolve import "virtual:react-router/server-build" from "workers/app.ts". Does the file exist?
+    alias: !isServerRunning
+      ? {
+          "virtual:react-router/server-build": path.resolve(
+            dirname,
+            ".storybook/mock-server-build.ts"
+          ),
+        }
+      : {},
+  },
   test: {
     projects: [
       "vite.config.ts",

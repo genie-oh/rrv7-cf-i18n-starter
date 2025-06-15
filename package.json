@@ -11,6 +11,9 @@
     "preview": "pnpm run build && vite preview",
     "typecheck": "npm run cf-typegen && react-router typegen && tsc -b",
     "storybook": "storybook dev -p 6006",
+    "storybook-ja": "STORYBOOK_LOCALE=ja storybook dev -p 6006",
+    "storybook-en": "STORYBOOK_LOCALE=en storybook dev -p 6006",
+    "storybook-ko": "STORYBOOK_LOCALE=ko storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "vitest --project=storybook --reporter=verbose"
   },
