@@ -40,14 +40,18 @@ export function loader({ context }: Route.LoaderArgs) {
     },
   };
 
-  return { message, translations };
+  const renderedAt = new Date().toLocaleString();
+  const logger = context.get(ServerGlobalContext).logger;
+  logger.debug(`renderedAt: ${renderedAt}`);
+
+  return { message, translations, renderedAt };
 }
 
 export default function Sample({
   loaderData,
   params,
 }: Pick<Route.ComponentProps, "loaderData" | "params">) {
-  const { message, translations } = loaderData;
+  const { message, translations, renderedAt } = loaderData;
   const { locale } = params;
   const location = useLocation();
   const navigate = useNavigate();
@@ -111,6 +115,7 @@ export default function Sample({
           <Text>
             {translations.sample.title} / {translations.sample.description}
           </Text>
+          <Text>renderedAt : {renderedAt}</Text>
         </HStack>
         <VStack>
           <Button>button</Button>
