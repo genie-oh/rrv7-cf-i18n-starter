@@ -4,12 +4,22 @@ import {
   Meta,
   Outlet,
   Scripts,
+  useLoaderData,
   ScrollRestoration,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
 import { Provider } from "./components/ui/provider";
+
+import { i18nextMiddleware } from "./middleware/i18next";
+import { fallbackLanguage } from "./infra/i18n/i18n-config";
+
+export const unstable_middleware = [i18nextMiddleware];
+
+export async function loader({ params }: Route.LoaderArgs) {
+  return { locale: params.locale };
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -25,8 +35,11 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useLoaderData<typeof loader>();
+  const locale = data?.locale || fallbackLanguage;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
