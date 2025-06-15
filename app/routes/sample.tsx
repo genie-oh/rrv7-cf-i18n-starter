@@ -22,7 +22,9 @@ export function loader({ context }: Route.LoaderArgs) {
   return { message };
 }
 
-export default function Sample({ loaderData }: Route.ComponentProps) {
+export default function Sample({
+  loaderData,
+}: Pick<Route.ComponentProps, "loaderData">) {
   return (
     <Container
       minH="100vh"
