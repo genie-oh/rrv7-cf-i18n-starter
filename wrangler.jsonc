@@ -8,6 +8,15 @@
 	"compatibility_date": "2025-04-04",
 	"main": "./workers/app.ts",
 	"vars": {
+		"LOG": {
+			"LEVEL": "debug"
+		},
+		"CACHE": {
+			"DEFAULT_TTL": 120,
+			"CUSTOM_TTL_PATH_DICT": {
+				"/": 0
+			}
+		},
 		"VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
 	},
 	"observability": {
