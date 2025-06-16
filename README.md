@@ -1,79 +1,34 @@
-# Welcome to React Router!
+## React Router v7 + Cloudflare Workers i18n Starter
 
-A modern, production-ready template for building full-stack React applications using React Router.
+> Built for learning and rapid prototyping of i18n-enabled SSR on the edge.
 
-## Features
+This is a multilingual-ready starter template using:
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **React Router v7 (Remix Router)**: for client/server shared routing
+- **remix-i18next**: to handle internationalization with SSR support
+- **Cloudflare Workers**: for edge runtime deployment
+- **i18next**: flexible translation framework
+- **Chakra UI**: simple and themeable component system
+- **Storybook**: component-level i18n testing
+- **Cache API (Cloudflare Workers)**: to enable SSR page-level caching
 
-## Getting Started
+### Key Features
 
-### Installation
+- 📁 **URL-path-based language routing** (`/en/sample`, `/ja/sample`, `/ko/sample`)
+- 🌐 **Automatic locale detection** using `accept-language` header
+- ⚡️ **Edge rendering with caching** via Cloudflare Workers Cache API
+- 🧪 **Storybook support** for locale-specific component previews
+- 🧩 Extensible and lightweight structure for small-to-mid size i18n projects
 
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
+### Quick Start
 
 ```bash
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Your application will be available at `http://localhost:5173`.
-
-## Previewing the Production Build
-
-Preview the production build locally:
+### Deployment
 
 ```bash
-npm run preview
+pnpm run deploy
 ```
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-Deployment is done using the Wrangler CLI.
-
-To build and deploy directly to production:
-
-```sh
-npm run deploy
-```
-
-To deploy a preview URL:
-
-```sh
-npx wrangler versions upload
-```
-
-You can then promote a version to production after verification or roll it out progressively.
-
-```sh
-npx wrangler versions deploy
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
